@@ -5,11 +5,9 @@ const MyContext = createContext();
 
 export function MyContextProvider({ children }) {
 
-  let productsDataFromLocal = JSON.parse(localStorage.getItem('cart')) || []
-  let productDetails = JSON.parse(localStorage.getItem('cartDetails'))
-    const [subTotal, setSubTotal] = useState(productsDataFromLocal.length)
-    const [cartProducts, setCartProducts] = useState(productsDataFromLocal)
-    const [showDetails, setShowDetails] = useState(productDetails)
+  const [cartProducts, setCartProducts] = useState([])
+  const [subTotal, setSubTotal] = useState(cartProducts.length)
+    const [showDetails, setShowDetails] = useState({})
   const [search, setSearch] = useState('')
   const [productCat, setProductCat] = useState('electronics')
   
@@ -28,14 +26,14 @@ export function MyContextProvider({ children }) {
   
   
   const removeFromCart = (id) => {
-    const indexToDelete = productsDataFromLocal.findIndex(item => item.id === id);
+    const indexToDelete = cartProducts.findIndex(item => item.id === id);
   console.log(indexToDelete)
     if (indexToDelete !== -1) {
-      productsDataFromLocal.splice(indexToDelete, 1);
-      setCartProducts(productsDataFromLocal)
+      cartProducts.splice(indexToDelete, 1);
+      setCartProducts(cartProducts)
     }
-    localStorage.setItem('cart', JSON.stringify(productsDataFromLocal));
-    setSubTotal(productsDataFromLocal.length)
+    localStorage.setItem('cart', JSON.stringify(cartProducts));
+    setSubTotal(cartProducts.length)
   }
 
 
@@ -49,7 +47,7 @@ export function MyContextProvider({ children }) {
       
      
   return (
-    <MyContext.Provider value={{addToCart,subTotal,removeFromCart,setSubTotal , productsDataFromLocal , cartProducts , showDetails,ShowProductDetails,search, setSearch,productCat, setProductCat}}>
+    <MyContext.Provider value={{addToCart,subTotal,removeFromCart,setSubTotal ,  cartProducts , showDetails,ShowProductDetails,search, setSearch,productCat, setProductCat}}>
       {children}
     </MyContext.Provider>
   );
