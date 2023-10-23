@@ -20,17 +20,17 @@ export function MyContextProvider({ children }) {
    let  lCart =   JSON.parse(localStorage.getItem('cart')) || []
  
   lCart.push({ id,title,desc, price,  image,rating})
-  setCartProducts(lCart)
   setSubTotal(lCart.length)
-  
+  setCartProducts(lCart)
   localStorage.setItem('cart', JSON.stringify(lCart))
+  
 }
  
   
   
   const removeFromCart = (id) => {
     const indexToDelete = cartProducts.findIndex(item => item.id === id);
-  console.log(indexToDelete)
+  
     if (indexToDelete !== -1) {
       cartProducts.splice(indexToDelete, 1);
       setCartProducts(cartProducts)
@@ -50,6 +50,9 @@ export function MyContextProvider({ children }) {
 useEffect(() => {
   let details = JSON.parse(localStorage.getItem('cartDetails'))
   setShowDetails(details)
+  let  localDataForCart =   JSON.parse(localStorage.getItem('cart')) 
+  setCartProducts(localDataForCart)
+  setSubTotal(localDataForCart.length)
 }, [])
       
      
