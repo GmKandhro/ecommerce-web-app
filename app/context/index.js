@@ -13,7 +13,7 @@ export function MyContextProvider({ children }) {
   const [showLinks, setShowLinks] = useState(false);
 
   const handleClick = ()=>{
-    handleClick(setShowLinks)
+    setShowLinks(!showLinks);
   }
 
   const addToCart =  (id,title,desc , price,  image,rating)=>{

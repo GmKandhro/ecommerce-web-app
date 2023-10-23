@@ -21,13 +21,13 @@ const Navbar = () => {
           <nav
           className={` ml-20 hidden md:flex flex-wrap flex- gap-2  items-center text-base justify-center  `}
         >
-          <Link className="mr-5 hover:text-gray-900" href="/" onClick={handleClick}>
+          <Link className="mr-5 hover:text-gray-900" href="/" >
             Home
           </Link>
-          <Link className="mr-5 hover:text-gray-900" href="/about" onClick={handleClick}>
+          <Link className="mr-5 hover:text-gray-900" href="/about" >
             About
           </Link>
-          <Link className="mr-5 hover:text-gray-900" href="/products" onClick={handleClick}>
+          <Link className="mr-5 hover:text-gray-900" href="/products" >
             Products
           </Link>
         </nav>
@@ -68,28 +68,26 @@ const Navbar = () => {
             showLinks ? 'block' : 'hidden'
           }`}
         >
-          <Link className="mr-5 text-white hover:text-gray-900" href="/">
+          <Link className="mr-5 text-white hover:text-gray-900" href="/" onClick={handleClick}>
             Home
           </Link>
-          <Link className="mr-5 text-white hover:text-gray-900" href="/about">
+          <Link className="mr-5 text-white hover:text-gray-900" href="/about" onClick={handleClick}>
             About
           </Link>
-          <Link className="mr-5 text-white hover:text-gray-900" href="/products">
+          <Link className="mr-5 text-white hover:text-gray-900" href="/products" onClick={handleClick}>
             Products
           </Link>
         </nav>
 
         <div className="absolute top-6 right-10 flex justify-center cursor-pointer items-center">
           {subTotal === 0 ? (
-            <p className="bg-none" style={{ backgroundColor: 'none' }}></p>
+            <p className="bg-none flex-none" style={{ backgroundColor: 'none' }}></p>
           ) : (
-            <p className="relative top-0 right-0 bg-red-500 rounded-full text-center h-3 w-3 text-white text-[10px]">
-              {subTotal}
-            </p>
-          )}
-          <p className="absolute top-0 right-0 bg-red-500 rounded-full text-center h-3 w-3 text-white text-[10px]">
+            <p className="absolute top-0 right-0 bg-red-500 rounded-full text-center h-3 w-3 text-white text-[10px]">
             {subTotal}
           </p>
+          )}
+         
           <Link className="hover:text-gray-900 text-[24px] " href="/cart">
             <AiOutlineShoppingCart />
           </Link>
