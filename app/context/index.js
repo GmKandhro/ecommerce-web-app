@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useState, useContext  } from 'react';
+import { createContext, useState, useContext, useEffect  } from 'react';
 const MyContext = createContext();
 
 
@@ -7,11 +7,14 @@ export function MyContextProvider({ children }) {
 
   const [cartProducts, setCartProducts] = useState([])
   const [subTotal, setSubTotal] = useState(cartProducts.length)
-    const [showDetails, setShowDetails] = useState({})
+  const [showDetails, setShowDetails] = useState({})
   const [search, setSearch] = useState('')
   const [productCat, setProductCat] = useState('electronics')
-  
+  const [showLinks, setShowLinks] = useState(false);
 
+  const handleClick = ()=>{
+    handleClick(setShowLinks)
+  }
 
   const addToCart =  (id,title,desc , price,  image,rating)=>{
    let  lCart =   JSON.parse(localStorage.getItem('cart')) || []
@@ -41,13 +44,17 @@ export function MyContextProvider({ children }) {
   localStorage.setItem('cartDetails', JSON.stringify({
     id,title,desc , price,  image,rating
   }))
-  setShowDetails({id,title,desc , price,  image,rating})
+  let details = JSON.parse(localStorage.getItem('cartDetails'))
+  setShowDetails(details)
   }
-
+useEffect(() => {
+  let details = JSON.parse(localStorage.getItem('cartDetails'))
+  setShowDetails(details)
+}, [])
       
      
   return (
-    <MyContext.Provider value={{addToCart,subTotal,removeFromCart,setSubTotal ,  cartProducts , showDetails,ShowProductDetails,search, setSearch,productCat, setProductCat}}>
+    <MyContext.Provider value={{addToCart,subTotal,removeFromCart,setSubTotal ,  cartProducts , showDetails,ShowProductDetails,search, setSearch,productCat, setProductCat , handleClick , showLinks, setShowLinks}}>
       {children}
     </MyContext.Provider>
   );

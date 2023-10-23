@@ -4,46 +4,71 @@ import { useMyContext } from '@/app/context';
 import { ProductsCategories } from '@/app/constants/data';
 import Link from 'next/link';
 const HeroSection = () => {
-  let {search, setSearch , setProductCat} =  useMyContext()
+  let {search, setSearch , setProductCat ,handleClick} =  useMyContext()
   return (
     <>
-    <div className="w-full   flex flex-wrap">
-      <div className="w-full">
-        <div className="flex bg-center flex-wrap w-full bg-gray-100 py-32 px-10 relative mb-4" >
-          <img
-            alt="gallery"
-            className="w-full object-cover h-full object-center block opacity-30 absolute inset-0"
-            src="https://cdn.pixabay.com/photo/2017/03/01/10/03/online-sales-2108028_1280.jpg"
+    <div className="w-full flex flex-wrap">
+  <div className="w-full">
+    <div className="flex bg-center flex-wrap w-full bg-gray-100 py-32 px-10 relative mb-4">
+      <img
+        alt="gallery"
+        className="w-full object-cover h-full object-center block opacity-60 absolute inset-0"
+        src="https://cdn.pixabay.com/photo/2017/03/01/10/03/online-sales-2108028_1280.jpg"
+      />
+      <div className="text-center flex flex-col justify-center items-center relative z-10 w-full">
+        <h2 className="text-4xl text-gray-900 font-semibold title-font mb-4">Discover the Best E-commerce Store</h2>
+        <p className="leading-relaxed text-lg lg:w-[900px] text-gray-700 mb-6">
+          Welcome to a world of quality products, amazing deals, and exceptional customer service. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </p>
+        <div className="w-full  lg:w-[500px] flex  items-center">
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            className="w-full px-4 py-3 outline-none border border-gray-300 rounded-lg shadow-md"
+            type="text"
+            placeholder="Search for products..."
           />
-          <div className="text-center flex flex-col justify-center items-center relative z-10 w-full">
-            <h2 className="text-2xl text-gray-900 font-medium title-font mb-2">The Best Ecommerce Store</h2>
-            <p className="leading-relaxed w-[900px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptate atque magnam eaque, eum praesentium vel mollitia minima? Eos, adipisci perferendis!.</p>
-            <div>
-            <input onChange={(e)=>setSearch(e.target.value)} value={search} className='w-[500px] px-2 py-1 outline-none border-1 rounded-sm' type="text" />
-            <Link href='/searchResults' className="mt-3 bg-[#cac4c4] cursor-pointer py-1 px-2 rounded-lg text-indigo-500 inline-flex items-center">
-              Search Product
-             
-            </Link>
-            </div>
-            <Link href='/products' className="mt-3 text-indigo-500 inline-flex items-center">
-              Shop Now
-              <svg
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </Link>
-          </div>
+          <Link
+            href="/searchResults"
+            className="  bg-indigo-500 hover:bg-indigo-600 text-white cursor-pointer py-3 px-6 rounded-lg text-lg inline-flex items-center transition duration-300" onClick={handleClick}
+          >
+            Search
+            <svg
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              className="w-5 h-5 ml-2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </Link>
         </div>
+        <Link
+          href="/products"
+          className="mt-6 text-indigo-500 inline-flex items-center text-lg hover:text-indigo-600 transition duration-300"
+        >
+          Shop Now
+          <svg
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            className="w-6 h-6 ml-2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </Link>
       </div>
     </div>
-<div className='flex flex-row flex-wrap px-16'>
+  </div>
+</div>
+
+<div className='flex flex-row flex-wrap lg:px-16 md:px-6'>
     {ProductsCategories.map((items)=>(
       <div className="p-4 md:w-1/3">
         <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
