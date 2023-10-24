@@ -50,10 +50,10 @@ export function MyContextProvider({ children }) {
 useEffect(() => {
   let details = JSON.parse(localStorage.getItem('cartDetails'))
   setShowDetails(details)
-  let  localDataForCart =   JSON.parse(localStorage.getItem('cart')) 
-  setCartProducts(localDataForCart)
-  let cartNum = localDataForCart.length || 0
-  setSubTotal(cartNum)
+  let  localDataForCart =   JSON.parse(localStorage.getItem('cart')) || []
+
+  
+  setSubTotal(localDataForCart.length)
 }, [])
       
      
