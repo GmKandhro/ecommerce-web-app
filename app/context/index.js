@@ -52,7 +52,8 @@ useEffect(() => {
   setShowDetails(details)
   let  localDataForCart =   JSON.parse(localStorage.getItem('cart')) 
   setCartProducts(localDataForCart)
-  setSubTotal(localDataForCart.length)
+  let cartNum = localDataForCart.length || 0
+  setSubTotal(cartNum)
 }, [])
       
      
