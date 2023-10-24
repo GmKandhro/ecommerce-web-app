@@ -4,7 +4,7 @@ import { useMyContext } from '@/app/context';
 import { ProductsCategories } from '@/app/constants/data';
 import Link from 'next/link';
 const HeroSection = () => {
-  let {search, setSearch , setProductCat ,handleClick} =  useMyContext()
+  let {search, setSearch , setProductCat ,setShowLinks} =  useMyContext()
   return (
     <>
     <div className="w-full flex flex-wrap">
@@ -30,7 +30,7 @@ const HeroSection = () => {
           />
           <Link
             href="/searchResults"
-            className="  bg-indigo-500 hover:bg-indigo-600 text-white cursor-pointer py-3 px-6 rounded-lg text-lg inline-flex items-center transition duration-300" onClick={handleClick}
+            className="  bg-indigo-500 hover:bg-indigo-600 text-white cursor-pointer py-3 px-6 rounded-lg text-lg inline-flex items-center transition duration-300" onClick={()=>setShowLinks(false)}
           >
             Search
             <svg
