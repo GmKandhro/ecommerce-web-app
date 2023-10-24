@@ -79,6 +79,7 @@ const Navbar = () => {
           </Link>
         </nav>
 
+          <Link className="hover:text-gray-900 text-[24px] " href="/cart">
         <div className="absolute top-6 right-10 flex justify-center cursor-pointer items-center">
           {subTotal === 0 ? (
             <p className="bg-none flex-none" style={{ backgroundColor: 'none' }}></p>
@@ -88,11 +89,10 @@ const Navbar = () => {
           </p>
           )}
          
-          <Link className="hover:text-gray-900 text-[24px] " href="/cart">
             <AiOutlineShoppingCart />
+      </div>
           </Link>
         </div>
-      </div>
     </header>
   );
 };
